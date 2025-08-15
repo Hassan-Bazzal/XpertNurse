@@ -12,13 +12,23 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+       public function doctorVisits()
+    {
+        return $this->hasMany(DoctorVisit::class, 'doctor_id');
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(Schedule::class, 'assigned_user_id');
+    }
+
+    public function clinicalNotes()
+    {
+        return $this->hasMany(ClinicalNote::class, 'author_id');
+    }
     protected $fillable = [
         'name',
+        
         'email',
         'password',
     ];
