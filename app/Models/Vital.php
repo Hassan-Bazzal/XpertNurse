@@ -12,4 +12,15 @@ class Vital extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+    
+
+ protected $fillable = [
+                'patient_id',
+                'blood_pressure',
+                'heart_rate',
+                'temperature',
+                'respiratory_rate',
+                'oxygen_saturation',
+                'recorded_at',
+            ];
 }

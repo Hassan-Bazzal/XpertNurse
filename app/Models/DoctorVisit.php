@@ -18,4 +18,13 @@ class DoctorVisit extends Model
         return $this->belongsTo(User::class, 'doctor_id');
     }
     protected $table = 'doctor_visits';
+    
+    protected $fillable = [
+        'patient_id',
+        'doctor_id',
+        'visit_date',
+        'reason_for_visit',
+        'diagnosis',
+        'treatment_plan',
+    ];
 }

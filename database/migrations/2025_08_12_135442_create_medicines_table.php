@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('dosage_form');
             $table->string('strength');
             $table->string('manufacturer')->nullable();
+            $table->decimal('price', 8, 2);
+            $table->integer('quantity');
             $table->timestamps();
         });
     }

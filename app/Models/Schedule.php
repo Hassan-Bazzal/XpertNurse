@@ -18,4 +18,13 @@ class Schedule extends Model
         return $this->belongsTo(User::class, 'assigned_user_id');
     }
     
+            protected $fillable = [
+                'patient_id',
+                'assigned_user_id',
+                'appointment_date',
+                'appointment_time',
+                'type',
+                'notes',
+            ];
+
 }

@@ -17,5 +17,12 @@ class ClinicalNote extends Model
     {
         return $this->belongsTo(User::class, 'author_id');
     }
+   
     protected $table = 'clinical_notes';
+    protected $fillable = [
+        'patient_id',
+        'author_id',
+        'note_date',
+        'note_text',
+    ];
 }

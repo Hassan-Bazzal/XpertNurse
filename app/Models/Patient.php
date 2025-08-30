@@ -34,4 +34,21 @@ class Patient extends Model
                     ->withPivot('dosage', 'start_date', 'end_date')
                     ->withTimestamps();
     }
+    protected $table = 'patients';
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'gender',
+        'address',
+        'email',
+        'contact_number',
+        'date_of_birth',
+        'emergency_contact_name',
+        'emergency_contact_number',
+
+    ];
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 }
