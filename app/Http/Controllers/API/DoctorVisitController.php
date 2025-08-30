@@ -38,7 +38,7 @@ class DoctorVisitController extends Controller
     {
         $request->validate([
             'patient_id' => 'required|exists:patients,id',
-            'doctor_id' => 'required|exists:doctors,id',
+            'doctor_id' => 'required|exists:users,id',
             'visit_date' => 'required|date',
             'reason_for_visit' => 'nullable|string|max:1000',
             'diagnosis' => 'nullable|string|max:1000',
