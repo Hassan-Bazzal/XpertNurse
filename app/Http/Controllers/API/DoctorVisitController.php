@@ -13,6 +13,7 @@ class DoctorVisitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //* Display a listing of all doctor visits.
     public function index()
     {
         return response()->json(['doctor_visits' => DoctorVisit::all()]);
@@ -23,10 +24,7 @@ class DoctorVisitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -34,6 +32,7 @@ class DoctorVisitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //* Store a newly created doctor visit in storage.
     public function store(Request $request)
     {
         $request->validate([
@@ -58,13 +57,14 @@ class DoctorVisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified doctor visit by ID.
     public function show($id)
     {
         $doctorVisit = DoctorVisit::find($id);
         if (!$doctorVisit) {
             return response()->json(['message' => 'Doctor visit not found'], 404);
         }
-        return response()->json(['doctor_visit' => $doctorVisit], 200);
+        return response()->json(['doctor_visit found successfully' => $doctorVisit], 200);
     }
 
     /**
@@ -73,10 +73,7 @@ class DoctorVisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+  
 
     /**
      * Update the specified resource in storage.
@@ -85,6 +82,7 @@ class DoctorVisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified doctor visit in storage.
     public function update(Request $request, $id)
     {
         $doctorVisit = DoctorVisit::find($id);
@@ -114,6 +112,7 @@ class DoctorVisitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Remove the specified doctor visit from storage.
     public function destroy($id)
     {
         $doctorVisit = DoctorVisit::find($id);

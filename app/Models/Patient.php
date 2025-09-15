@@ -30,9 +30,8 @@ class Patient extends Model
 
     public function medicines()
     {
-        return $this->belongsToMany(Medicine::class, 'patient_medicines')
-                    ->withPivot('dosage', 'start_date', 'end_date')
-                    ->withTimestamps();
+        return $this->belongsToMany(Medicine::class);
+
     }
     protected $table = 'patients';
     protected $fillable = [

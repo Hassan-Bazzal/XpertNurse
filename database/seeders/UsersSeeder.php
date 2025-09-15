@@ -19,11 +19,11 @@ class UsersSeeder extends Seeder
     {
 DB::table('users')->insert([
             [
-                'name' => 'Admin User',
-                'email' => 'admin@xpertnurse.com',
-                'password' => Hash::make('password'),
-                'role' => 'admin',
-                'phone' => '70000001',
+                'name' => env('ADMIN_NAME', 'Admin User'),
+    'email' => env('ADMIN_EMAIL', 'admin@xpertnurse.com'),
+    'password' => Hash::make(env('DEFAULT_ADMIN_PASSWORD')),
+    'role' => 'admin',
+    'phone' => env('ADMIN_PHONE', '70000001'),
             ],
             [
                 'name' => 'Dr. John Smith',

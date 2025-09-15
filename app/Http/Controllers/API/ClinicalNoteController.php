@@ -13,6 +13,7 @@ class ClinicalNoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //* Display a listing of all clinical notes.
     public function index()
     {
         return response()->json(['clinical_notes' => ClinicalNote::all()]);
@@ -23,10 +24,7 @@ class ClinicalNoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
@@ -34,6 +32,7 @@ class ClinicalNoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //* Store a newly created clinical note in storage.
     public function store(Request $request)
     {
             $request->validate([
@@ -56,6 +55,7 @@ class ClinicalNoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified clinical note by ID.
     public function show($id)
     {
         $clinicalNote = ClinicalNote::find($id);
@@ -71,10 +71,7 @@ class ClinicalNoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+  
 
     /**
      * Update the specified resource in storage.
@@ -83,6 +80,7 @@ class ClinicalNoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified clinical note in storage.
     public function update(Request $request, $id)
     {
         $clinicalNote = ClinicalNote::find($id);
@@ -110,6 +108,7 @@ class ClinicalNoteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    ////* Remove the specified clinical note from storage.
     public function destroy($id)
     {
         $clinicalNote = ClinicalNote::find($id);

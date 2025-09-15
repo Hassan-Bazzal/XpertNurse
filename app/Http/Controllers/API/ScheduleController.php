@@ -13,6 +13,7 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //* Display a listing of all schedules.
     public function index()
     {
         return response()->json(['schedules' => Schedule::all()]);
@@ -23,10 +24,7 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -34,6 +32,7 @@ class ScheduleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //* Store a newly created schedule in storage.
     public function store(Request $request)
     {
        
@@ -59,13 +58,14 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified schedule by ID.
     public function show($id)
     {
         $schedule = Schedule::find($id);
         if (!$schedule) {
             return response()->json(['message' => 'Schedule not found'], 404);
         }
-        return response()->json(['schedule' => $schedule], 200);
+        return response()->json(['schedule found successfully' => $schedule], 200);
     }
 
     /**
@@ -74,10 +74,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+   
 
     /**
      * Update the specified resource in storage.
@@ -86,6 +83,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified schedule in storage.
     public function update(Request $request, $id)
     {
         $schedule = Schedule::find($id);
@@ -113,6 +111,7 @@ class ScheduleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Remove the specified schedule from storage.
     public function destroy($id)
     {
         $schedule = Schedule::find($id);

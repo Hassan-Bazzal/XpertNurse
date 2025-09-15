@@ -15,7 +15,7 @@ class MedicinesPatientsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('medicines_patients')->insert([
+        DB::table('medicine_patient')->insert([
             [
                 'patient_id' => 1,
                 'medicine_id' => 1,

@@ -10,9 +10,8 @@ class Medicine extends Model
     use HasFactory;
     public function patients()
     {
-        return $this->belongsToMany(Patient::class, 'patient_medicines')
-                    ->withPivot('dosage', 'start_date', 'end_date')
-                    ->withTimestamps();
+        return $this->belongsToMany(Patient::class);
+                    
     }
     protected $table = 'medicines';
     protected $fillable = [

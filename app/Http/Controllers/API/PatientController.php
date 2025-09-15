@@ -13,9 +13,10 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //* Display a listing of all patients.
     public function index()
     {
-        return response()->json(['patients' => Patient::all()]);
+        return response()->json(['patients found successfully' => Patient::all()]);
     }
 
     /**
@@ -23,10 +24,7 @@ class PatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -34,6 +32,7 @@ class PatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //* Store a newly created patient in storage.
     public function store(Request $request)
     {  
          
@@ -72,13 +71,14 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified patient by ID.
     public function show($id)
     {
         $patient = Patient::find($id);
         if (!$patient) {
             return response()->json(['message' => 'Patient not found'], 404);
         }
-        return response()->json(['patient' => $patient]);
+        return response()->json(['patient found successfully' => $patient]);
     }
 
     /**
@@ -87,10 +87,7 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -99,6 +96,7 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified patient by ID.
     public function update(Request $request, $id)
     {
         $patient = Patient::find($id);
@@ -140,6 +138,7 @@ class PatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Remove the specified patient from storage.
     public function destroy($id)
     {
         $patient = Patient::find($id);

@@ -13,6 +13,7 @@ class MedicineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //* Display a listing of all medicines.
     public function index()
     {
         return response()->json(['medicines' => Medicine::all()]);
@@ -23,10 +24,7 @@ class MedicineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -34,6 +32,7 @@ class MedicineController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //* Store a newly created medicine in storage.
     public function store(Request $request)
     {
         $request->validate([
@@ -67,13 +66,14 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified medicine by ID.
     public function show($id)
     {
         $medicine = Medicine::find($id);
         if (!$medicine) {
             return response()->json(['message' => 'Medicine not found'], 404);
         }
-        return response()->json(['medicine' => $medicine], 200);
+        return response()->json(['medicine found successfully' => $medicine], 200);
     }
 
     /**
@@ -82,10 +82,7 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -94,6 +91,7 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified medicine by ID.
     public function update(Request $request, $id)
     {
         $medicine = Medicine::find($id);
@@ -122,6 +120,7 @@ class MedicineController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Remove the specified medicine from storage.
     public function destroy($id)
     {
         $medicine = Medicine::find($id);

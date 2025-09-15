@@ -14,15 +14,17 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // Display a listing of all users.
     public function index()
     {
         return response()->json(['users' => User::all()]);
     }
-    public function register(){
+     // Register a new user and generate an API token.
+    public function register(Request $request){
          $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
+            'email' => 'required|string|email|max:255|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
             'role' => 'required|in:nurse,admin,doctor',
             'phone' => 'required|string|max:15',
         ]);
@@ -39,6 +41,7 @@ class AuthController extends Controller
         return response()->json(['user' => $user, 'token' => $token], 201);
 
     }
+    // Authenticate a user and issue an API token.
     public function login(Request $request){
          $request->validate([
             'email' => 'required|email',
@@ -60,10 +63,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
@@ -73,24 +73,7 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'role' => 'required|in:nurse,admin,doctor',
-            'phone' => 'required|string|max:15',
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
-            'phone' => $request->phone,
-        ]);
-        $token = $user->createToken('API Token')->plainTextToken;
-
-        return response()->json(['user' => $user, 'token' => $token], 201);
+      
     }
 
     /**
@@ -99,13 +82,15 @@ class AuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified user by ID.
+
     public function show($id)
     {
         $user = User::find($id);
         if (!$user) {
             return response()->json(['message' => 'User not found'], 404);
         }
-        return response()->json(['user' => $user], 200);
+        return response()->json(['user found successfully' => $user], 200);
     }
 
     /**
@@ -114,10 +99,7 @@ class AuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+   
 
     /**
      * Update the specified resource in storage.
@@ -126,11 +108,12 @@ class AuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified user by ID.
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => 'sometimes|required|string|max:255',
-            'email' => 'sometimes|required|email|unique:users,email,' . $id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'sometimes|required|min:6|confirmed',
             'role' => 'sometimes|required|in:nurse,admin,doctor',
             'phone' => 'sometimes|required|string|max:15',
@@ -149,7 +132,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return response()->json(['user' => $user], 200);
+        return response()->json(['user updated successfully' => $user], 200);
     }
 
     /**
@@ -158,6 +141,7 @@ class AuthController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Remove the specified user from storage.
     public function destroy($id)
     {
         $user = User::find($id);

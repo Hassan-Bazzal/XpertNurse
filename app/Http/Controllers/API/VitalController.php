@@ -12,9 +12,10 @@ class VitalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //* Display a listing of all vital signs.
     public function index()
     {
-        return response()->json(['vitals' => Vital::all()]);
+        return response()->json(['vitals found successfully' => Vital::all()]);
     }
 
     /**
@@ -22,10 +23,7 @@ class VitalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -33,6 +31,7 @@ class VitalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //* Store a newly created vital signs record in storage.
     public function store(Request $request)
     {
             $request->validate([
@@ -58,13 +57,14 @@ class VitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified vital signs by ID.
     public function show($id)
     {
         $vital = Vital::find($id);
         if (!$vital) {
             return response()->json(['message' => 'Vital signs not found'], 404);
         }
-        return response()->json(['vital' => $vital], 200);
+        return response()->json(['vital found successfully' => $vital], 200);
     }
 
     /**
@@ -73,10 +73,7 @@ class VitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+    
 
     /**
      * Update the specified resource in storage.
@@ -85,6 +82,7 @@ class VitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified vital signs in storage.
     public function update(Request $request, $id)
     {
         $vital = Vital::find($id);
@@ -115,6 +113,7 @@ class VitalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Remove the specified vital signs from storage.
     public function destroy($id)
     {
         $vital = Vital::find($id);

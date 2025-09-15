@@ -17,6 +17,7 @@ class Schedule extends Model
     {
         return $this->belongsTo(User::class, 'assigned_user_id');
     }
+    protected $table = 'schedules';
     
             protected $fillable = [
                 'patient_id',

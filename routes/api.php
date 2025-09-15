@@ -22,18 +22,28 @@ use App\Http\Controllers\API\ScheduleController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::apiResource('users', AuthController::class);
-Route::post('register', [AuthController::class, 'register']);
-Route::post('login', [AuthController::class, 'login']);
-Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('patients', PatientController::class);
-    Route::apiResource('medicines', MedicineController::class);
-    Route::apiResource('doctor-visits', DoctorVisitController::class);
-    Route::apiResource('vitals', VitalController::class);
-    Route::apiResource('clinical-notes', ClinicalNoteController::class);
-    Route::apiResource('schedules', ScheduleController::class);
-    Route::apiResource('medicine-patient', MedicinePatientController::class);
+Route::prefix('v1')->group(function () {
+    // Default user route
+    Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    // Authentication
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+
+    // Users list (only for logged-in users)
+    Route::get('/users', [AuthController::class, 'index'])
+        ->middleware('auth:sanctum');
+
+    // Protected resources
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::apiResource('patients', PatientController::class);
+        Route::apiResource('medicines', MedicineController::class);
+        Route::apiResource('doctor-visits', DoctorVisitController::class);
+        Route::apiResource('vitals', VitalController::class);
+        Route::apiResource('clinical-notes', ClinicalNoteController::class);
+        Route::apiResource('schedules', ScheduleController::class);
+        Route::apiResource('medicine-patient', MedicinePatientController::class);
+    });
 });

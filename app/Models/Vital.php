@@ -12,6 +12,7 @@ class Vital extends Model
     {
         return $this->belongsTo(Patient::class);
     }
+    protected $table = 'vitals';
     
 
  protected $fillable = [

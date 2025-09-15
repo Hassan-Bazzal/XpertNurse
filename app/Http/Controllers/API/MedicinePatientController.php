@@ -13,9 +13,10 @@ class MedicinePatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //* Display a listing of all medicine-patient records.
     public function index()
     {
-        return response()->json(['medicines' => MedicinePatient::all()]);
+        return response()->json(['medicines found successfully' => MedicinePatient::all()]);
     }
 
     /**
@@ -23,10 +24,7 @@ class MedicinePatientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -34,6 +32,7 @@ class MedicinePatientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //* Store a newly created medicine-patient record in storage.
     public function store(Request $request)
     {
             $request->validate([
@@ -65,13 +64,14 @@ class MedicinePatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Display the specified medicine-patient record by ID.
     public function show($id)
     {
         $medicinePatient = MedicinePatient::find($id);
         if (!$medicinePatient) {
             return response()->json(['message' => 'Medicine-Patient record not found'], 404);
         }
-        return response()->json(['medicine_patient' => $medicinePatient], 200);
+        return response()->json(['medicine_patient found successfully' => $medicinePatient], 200);
     }
 
     /**
@@ -80,10 +80,7 @@ class MedicinePatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+   
 
     /**
      * Update the specified resource in storage.
@@ -92,6 +89,7 @@ class MedicinePatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Update the specified medicine-patient record in storage.
     public function update(Request $request, $id)
     {
         $medicinePatient = MedicinePatient::find($id);
@@ -121,6 +119,7 @@ class MedicinePatientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    //* Remove the specified medicine-patient record from storage.
     public function destroy($id)
     {
         $medicinePatient = MedicinePatient::find($id);
